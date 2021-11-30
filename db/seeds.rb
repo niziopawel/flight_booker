@@ -40,7 +40,7 @@ def get_duration(departure, arrival)
 end
 
 def random_time
-  Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 10)
+  Faker::Time.between(from: DateTime.now - 1, to: DateTime.now + 30)
 end
 
 ActiveRecord::Base.transaction do
@@ -115,17 +115,19 @@ ActiveRecord::Base.transaction do
     }
   )
 
-  airports.each do |departure|
-    airports.each do |arrival|
-      next if departure == arrival
+  10.times do
+    airports.each do |departure|
+      airports.each do |arrival|
+        next if departure == arrival
 
-      3.times do |_n|
-        Flight.create({
-                        departure_airport: departure,
-                        arrival_airport: arrival,
-                        flight_start: random_time,
-                        flight_duration: get_duration(departure.code, arrival.code)
-                      })
+        3.times do |_n|
+          Flight.create({
+                          scheduled_on: random_time,
+                          departure_airport: departure,
+                          arrival_airport: arrival,
+                          duration: get_duration(departure.code, arrival.code)
+                        })
+        end
       end
     end
   end

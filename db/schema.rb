@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2021_11_30_102654) do
   create_table "flights", force: :cascade do |t|
     t.bigint "departure_airport_id", null: false
     t.bigint "arrival_airport_id", null: false
-    t.datetime "flight_start"
-    t.integer "flight_duration"
+    t.datetime "scheduled_on"
+    t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"

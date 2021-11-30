@@ -1,0 +1,32 @@
+<% if flights %>
+  <% if flights.count.zero? %>
+    <h4>There are no flights matching your search queries.</h4>
+  <% else %>
+    <h4><%= pluralize(flights.length, 'flight') %> matched your search</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Departs</th>
+          <th>Arrives</th>
+          <th>Date</th>
+          <th>Departure</th>
+          <th>Duration</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% flights.each do |flight| %>
+          <tr>
+            <td><%= flight.departure_airport.code %></td>
+            <td><%= flight.arrival_airport.code %></td>
+            <td><%= flight.formatted_date%></td>
+            <td><%= flight.formatted_time%></td>
+            <td><%= flight.formatted_duration %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>

@@ -3,8 +3,8 @@
 # Table name: flights
 #
 #  id                   :bigint           not null, primary key
-#  flight_duration      :integer
-#  flight_start         :datetime
+#  duration             :integer
+#  scheduled_on         :datetime
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  arrival_airport_id   :bigint           not null

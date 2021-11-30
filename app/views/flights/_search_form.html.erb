@@ -1,0 +1,23 @@
+<%= form_with(scope: :search, url: flights_path, method: :get, class: 'form') do |f| %>
+  <div class="form-group">
+    <%= f.label :departure_airport_id, 'From:' %>
+    <%= f.select :departure_airport_id, @airport_options, required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :arrival_airport_id, 'To:'%>
+    <%= f.select :arrival_airport_id, @airport_options, required: true %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :date, 'Date: ' %>
+    <%= f.date_field :date %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :number_of_passengers, 'Number of passengers:' %>
+    <%= f.select(:number_of_passengers, (1..4)) %>
+  </div>
+  
+  <%= f.submit "Search Flights" %>
+<% end %>
