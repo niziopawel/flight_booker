@@ -25,7 +25,7 @@ class Flight < ApplicationRecord
   belongs_to :departure_airport, class_name: 'Airport'
   has_many :bookings
   has_many :passengers, through: :bookings
-  scope :upcoming, -> { where('date >= ?', Date.today) }
+  scope :upcoming, -> { where('scheduled_on >= ?', Date.today) }
 
   def formatted_date
     scheduled_on.strftime('%d-%m-%Y')
@@ -43,15 +43,18 @@ class Flight < ApplicationRecord
   end
 
   def self.search(search)
-    return Flight.order(:scheduled_on) if search.empty?
+    flights = upcoming
 
-    if !search[:date]
-      Flight.where(search).order(:scheduled_on)
-    else
-      formatted_date = Date.strptime(search.delete(:date), '%Y-%m-%d').all_day
-      search_query_with_date = search.merge({ scheduled_on: formatted_date })
-
-      Flight.where(search_query_with_date).order(:scheduled_on)
+    unless search.empty?
+      flights = flights.where(departure_airport_id: search[:departure_airport_id],
+                              arrival_airport_id: search[:arrival_airport_id])
     end
+
+    unless search[:date].empty?
+      formatted_date = Date.strptime(search[:date], '%Y-%m-%d').all_day
+      flights = flights.where(scheduled_on: formatted_date)
+    end
+
+    flights.order(:scheduled_on)
   end
 end
