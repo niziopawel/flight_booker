@@ -1,24 +1,24 @@
-# README
+# FlightsBooking 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## General Info
 
-Things you may want to cover:
+Simple booking flights project, based on one of theodinproject.com exercise.
+Project created for educational purposes. The focus of this project is getting more comforable with with Active Record and more advanced forms.
+it Does not require and user authentication or authorization.
 
-* Ruby version
+User can search flights based on the origin airport, destination airport, and departure date. After getting search results, user can book a flight for specified number of passengers.
 
-* System dependencies
+## Local installation
 
-* Configuration
+- Prerequisites: Rails, Git, and Bundler
+- Clone this repo
+- Navigate into this project's directory cd `flight_booker` 
+- Install the required gems `bundle install`
+- Migrate the database, by running `rails db:migrate`
+- Seed the database, by running `rails db:seed`
+- Start the local server, by running `rails server`
+- View `localhost:3000` in a web browser
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
