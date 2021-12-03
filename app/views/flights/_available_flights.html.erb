@@ -12,6 +12,7 @@
           <th>Date</th>
           <th>Departure</th>
           <th>Duration</th>
+          <th>Passengers</th>
           <th></th>
         </tr>
       </thead>
@@ -24,6 +25,11 @@
             <td><%= flight.formatted_date%></td>
             <td><%= flight.formatted_time%></td>
             <td><%= flight.formatted_duration %></td>
+            <%= form_with url: new_booking_path, method: :get do |f| %>
+              <%= f.hidden_field :flight_id, value: flight.id %>
+              <td><%= f.select :passenger_count, options_for_select((1..4).each) %></td>
+              <td><%= f.submit 'Book a flight' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

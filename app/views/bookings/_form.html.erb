@@ -1,0 +1,16 @@
+<%= form_with model: @booking, url: bookings_path, method: :post do |f|%>
+  <%= f.hidden_field :flight_id, value: @flight.id %>
+  
+  <h3>Passengers Details: </h3>
+    <%= f.fields_for :passengers do |passenger_f| %>   
+      <h4>Passenger nr: <%= passenger_f.options[:child_index] + 1 %></h4>
+      <div style="display:flex;">
+        <%= passenger_f.label :name %>
+        <%= passenger_f.text_field :name, required: true %>
+
+        <%= passenger_f.label :email %>
+        <%= passenger_f.email_field :email, required: true, autocomplete: 'email' %>
+      </div>
+    <% end %>
+    <%= f.submit "Book flight" %>
+<% end %>

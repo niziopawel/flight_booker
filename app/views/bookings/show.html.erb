@@ -1,0 +1,17 @@
+<h1>Booking details</h1>
+
+<%= render 'flights/flight', flight: @flight %>
+
+<% @booking.passengers.each do |passenger| %>
+  <h4>Ticket:</h4>
+  <div style="display:flex;flex-direction:column;">
+    <p><strong>Name: </strong> <%= passenger.name %></p>
+    <p><strong>Email: </strong> <%= passenger.email %></p>
+    <p><strong>From: </strong><%= @booking.flight.departure_airport.city %></p>
+    <p><strong>To: </strong> <%= @booking.flight.arrival_airport.city %></p>
+    <p><strong>Date: </strong><%= @booking.flight.formatted_date%></p>
+    <p><strong>Time: </strong><%= @booking.flight.formatted_time%></p>
+  </div>
+<% end %>
+
+
