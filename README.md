@@ -3,8 +3,8 @@
 ## General Info
 
 Simple booking flights project, based on one of theodinproject.com exercise.
-Project created for educational purposes. The focus of this project is getting more comforable with with Active Record and more advanced forms.
-it Does not require and user authentication or authorization.
+Project created for educational purposes. The focus of this project is getting more comforable with Active Record and more advanced forms.
+It does not require and user authentication or authorization.
 
 User can search flights based on the origin airport, destination airport, and departure date. After getting search results, user can book a flight for specified number of passengers.
 
